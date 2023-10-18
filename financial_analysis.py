@@ -24,4 +24,28 @@ stock_incomestmt
 stock_history = stock.history(period=period)
 stock_history
 
+#explotary data analysis
+stock_info.keys()
+stock_info['industry']
+stock_info['fullTimeEmployees']
+stock_info['website']
+
+#Financial Ratios
+stock_info['profitMargins']
+
+#Stock history
+stock_history.reset_index().info()
+
+#Stock Data transformation
+stock_df=stock_history[['Close']].reset_index()
+
+stock_df['mavg_short']=stock_df['Close'].rolling(window=window_mavg_short).mean()
+stock_df['mavg_long']=stock_df['Close'].rolling(window=window_mavg_long).mean()
+
+stock_df
+
+
+
+
+
 
