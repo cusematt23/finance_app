@@ -4,6 +4,7 @@ import pandas as pd
 import yfinance as yf
 import datetime as dt
 from plotly import express as px
+import nbformat
 
 #USER INPUTS
 symbol='MSFT'
@@ -43,6 +44,45 @@ stock_df['mavg_short']=stock_df['Close'].rolling(window=window_mavg_short).mean(
 stock_df['mavg_long']=stock_df['Close'].rolling(window=window_mavg_long).mean()
 
 stock_df
+
+#SIMPLE VISUAL
+px.line(
+    data_frame=stock_df.set_index('Date')
+)
+
+# Professionalize the plot
+fig = px.line(
+    data_frame=stock_df.set_index('Date'),
+    color_discrete_map={
+        "Close": "#2C3E50",
+        "mavg_short": "#E31A1C",
+        "mavg_long": "#18BC9C"
+    },
+    title=f"{symbol} Stock Chart"
+)
+
+fig = fig.update_layout(
+    plot_bgcolor='white',
+    paper_bgcolor='rgba(0,0,0,0)',
+    legend_title_text=''
+)
+
+fig = fig.update_yaxes(
+    title="Share Price",
+    tickprefix="$",
+    gridcolor='#2c3e50'
+)
+
+fig = fig.update_xaxes(
+    title='',
+    gridcolor='#2c3e50'
+)
+
+fig
+
+
+
+
 
 
 
