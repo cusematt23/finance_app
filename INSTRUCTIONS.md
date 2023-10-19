@@ -12,3 +12,8 @@
     -Make all calculates and events REACTIVE
     -This is the basic working application
 
+
+This app is copyrighted by Business Science
+I am not affiliated with Business Science, I simply followed his youtube tutorial and am practicing.
+
+
