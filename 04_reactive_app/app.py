@@ -103,7 +103,7 @@ app_ui = ui.page_navbar(
                     ui.output_text("txt")
                 ),
                 ui.div(
-                    output_widget("stock_summary", width="auto", height="auto"),
+                    output_widget("stock_chart_widget", width="auto", height="auto"),
                    class_="card"
                 ),
                 ui.navset_pill_card(
@@ -150,7 +150,7 @@ def server(input, output, session:Session):
     def stock_info_ui():
 
         stock_info = stock().info
-        
+
         app_ui = ui.row(
             #Company info
             ui.h5("Company Information"),
@@ -181,6 +181,7 @@ def server(input, output, session:Session):
     @output
     @render_widget
     def stock_chart_widget():
+        stock_history=stock().history(period=period)
         fig = make_plotly_chart(stock_history, window_mavg_short=30, window_mavg_long=90)
         return go.FigureWidget(fig)
     
@@ -188,6 +189,7 @@ def server(input, output, session:Session):
     @output
     @render.table
     def income_statement_table():
+        stock_incomestmt=stock().incomestmt
         return stock_incomestmt.reset_index()
     #end server()
 
