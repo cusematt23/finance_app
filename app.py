@@ -117,7 +117,7 @@ app_ui = ui.page_navbar(
                 ui.input_selectize(
                     "stock_symbol",
                     "Stock Symbol",
-                    ['AAPL','GOOG', 'MSFT'],
+                    ['AAPL','GOOG','MSFT'],
                     selected='MSFT',
                     multiple=False
                     ),
